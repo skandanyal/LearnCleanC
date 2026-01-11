@@ -25,7 +25,7 @@ where:
 | Time taken per iteration `T`<br>(seconds) |       0.005033 |     0.012175      |               0.005154         |               0.051348         |               -                |               -                |
 |          Instructions per Cycle           |           1.77 |       0.54        |               0.67             |               -                |               -                |               -                |
 |           Frontend cycles idle            |         4.10%  |       4.28%       |               62.71%           |               -                |               -                |               -                |
-|          Memory bandwidth (GBps)          |    0.000238426 |    0.000098563    |               0.00023282       |               0.00023370       |               -                |               -                |
+|          Memory bandwidth (GBps)          |    2384.26     |    985.63         |               2328.2           |              2337.0            |               -                |               -                |
 |             FLOPs per second              |       39737.73 |     16427.104     |                38804.812       |              24585.730         |                                |                                |
 |            Kernel overhead (%)            |        92.48%  |      91.56%       |               91.98%           |               97.76%           |                                |                                |
 |               CPUs utilized               |        0.999   |       0.997       |               0.999            |                0.999           |                                |                                |
