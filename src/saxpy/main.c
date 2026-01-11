@@ -37,7 +37,7 @@ int main() {
 
   volatile float sink;
   // 100 iterations
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 1000; i++)
     saxpy_parallel(x, y, a, n, 2);
 
   clock_gettime(CLOCK_MONOTONIC, &end_time);
