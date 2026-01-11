@@ -1,11 +1,20 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "parallel_kernel.h"
 #include "plain_kernel.h"
 #include "restrict_kernel.h"
 #include "gpu_kernel.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+/*
+* Wall-clock time
+* FLOPs/sec
+* Arithmetic intensity
+* Memory bandwidth
+* Vectorization reports
+* Scaling vs threads
+*/
 
 int main() {
     int n = 10000000;
@@ -19,12 +28,27 @@ int main() {
         y[i] = (float)i;
     }
 
+    // heating the cache lines
+    saxpy_restrict(x, y, a, n);
+
+    // recording WALL-TIME
+    struct timespec start_time, end_time;
+    clock_gettime(CLOCK_MONOTONIC, &start_time);
+
     volatile float sink;
-    for (int i = 0; i <5000; i++)
-        saxpy_gpu(x, y, a, n);
+    // 100 iterations
+    for (int i = 0; i <100; i++)
+        saxpy_restrict(x, y, a, n);
+
+    clock_gettime(CLOCK_MONOTONIC, &end_time);
+
+    double time_elapsed = ((end_time.tv_sec - start_time.tv_sec) + (end_time.tv_nsec - start_time.tv_nsec) * 1e-9) / 100;
 
     sink = y[n-1];
-    printf("%f\n", sink);
+    printf("-----RESULTS-----\n");
+    printf("Last element: %f\n", sink);
+    printf("Mean time per iteration: %.6f s\n", time_elapsed);
+
 
     free(x);
     free(y);
