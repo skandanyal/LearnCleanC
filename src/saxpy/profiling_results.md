@@ -26,9 +26,9 @@ where:
 |          Instructions per Cycle           |      1.77      |       0.54        |              0.67              |               -                |               -                |               -                |
 |           Frontend cycles idle            |     4.10%      |       4.28%       |             62.71%             |               -                |               -                |               -                |
 |          Memory bandwidth (GBps)          |     23.84      |       9.85        |             23.28              |             23.37              |               -                |               -                |
-|             GFLOPs per second             |      3.97      |       1.64        |              3.88              |              3.89              |                                |                                |
-|            Kernel overhead (%)            |     92.48%     |      91.56%       |             91.98%             |             97.76%             |                                |                                |
-|               CPUs utilized               |     0.999      |       0.997       |             0.999              |             0.999              |                                |                                |
+|             GFLOPs per second             |      3.97      |       1.64        |              3.88              |              3.89              |               -                |               -                |
+|            Kernel overhead (%)            |     92.48%     |      91.56%       |             91.98%             |             97.76%             |               -                |               -                |
+|               CPUs utilized               |     0.999      |       0.997       |             0.999              |             0.999              |               -                |               -                |
 
 
 Experiment conducted on: AMD Ryzen 5 6600H (6 cores, 12 threads, 8 GB RAM)
