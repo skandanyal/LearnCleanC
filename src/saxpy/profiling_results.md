@@ -1,4 +1,8 @@
-0.54# Profiling results
+# Profiling results
+
+Experiments conducted on AMD Ryzen 5 6600H.
+Compiler flags used to debug: `-g -O0`
+Compiler flags used to benchmark: `-O3 -ffast-math -march=native`
 
 Kernel : `saxpy`
 ```
@@ -31,4 +35,3 @@ where:
 |               CPUs utilized               |     0.999      |       0.997       |             0.999              |             0.999              |               -                |               -                |
 
 
-Experiment conducted on: AMD Ryzen 5 6600H (6 cores, 12 threads, 8 GB RAM)
