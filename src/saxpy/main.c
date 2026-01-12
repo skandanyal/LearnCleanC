@@ -3,6 +3,7 @@
 #include "plain_kernel.h"
 #include "restrict_kernel.h"
 
+#include "omp.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -29,22 +30,26 @@ int main() {
   }
 
   // heating the cache lines
-  saxpy_parallel(x, y, a, n, 2);
+  saxpy_parallel(x, y, a, n);
 
   // recording WALL-TIME
   struct timespec start_time, end_time;
   clock_gettime(CLOCK_MONOTONIC, &start_time);
 
   volatile float sink;
-  // 100 iterations
+
+  // set number of threads
+  omp_set_num_threads(4);
+
+  // 1000 iterations for the parallel_kernel
   for (int i = 0; i < 1000; i++)
-    saxpy_parallel(x, y, a, n, 2);
+    saxpy_parallel(x, y, a, n);
 
   clock_gettime(CLOCK_MONOTONIC, &end_time);
 
   double time_elapsed = ((end_time.tv_sec - start_time.tv_sec) +
                          (end_time.tv_nsec - start_time.tv_nsec) * 1e-9) /
-                        100;
+                        1000;
 
   sink = y[n - 1];
   printf("-----RESULTS-----\n");
