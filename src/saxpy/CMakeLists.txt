@@ -1,9 +1,9 @@
 add_executable(saxpy
         main.c
-        plain_kernel.c
-        restrict_kernel.c
-        parallel_kernel.c
-        gpu_kernel.cu
+        kernels/plain_kernel.c
+        kernels/restrict_kernel.c
+        kernels/parallel_kernel.c
+        kernels/gpu_kernel.cu
 )
 target_link_libraries(saxpy PRIVATE project_config)
 target_include_directories(saxpy PRIVATE .)

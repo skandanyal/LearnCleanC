@@ -1,9 +1,12 @@
-#include "gpu_kernel.h"
-#include "parallel_kernel.h"
-#include "plain_kernel.h"
-#include "restrict_kernel.h"
+#ifdef QUICK_TEST
+int iters = 1;
+#else
+int iters = 1000;
+#endif
 
-#include "omp.h"
+#include "include/plain_kernel.h"
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -30,7 +33,7 @@ int main() {
   }
 
   // heating the cache lines
-  saxpy_parallel(x, y, a, n);
+  saxpy_plain(x, y, a, n);
 
   // recording WALL-TIME
   struct timespec start_time, end_time;
@@ -39,11 +42,11 @@ int main() {
   volatile float sink;
 
   // set number of threads
-  omp_set_num_threads(4);
+  // omp_set_num_threads(4);
 
   // 1000 iterations for the parallel_kernel
   for (int i = 0; i < 1000; i++)
-    saxpy_parallel(x, y, a, n);
+    saxpy_plain(x, y, a, n);
 
   clock_gettime(CLOCK_MONOTONIC, &end_time);
 
