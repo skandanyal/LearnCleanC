@@ -1,4 +1,4 @@
-#include "gpu_kernel.h"
+#include "../include/gpu_kernel.h"
 #include <cuda_runtime.h>
 
 __global__ void saxpy_kernel(const float* x,

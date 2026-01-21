@@ -2,7 +2,7 @@
 // Created by skandan-c-y on 1/8/26.
 //
 
-#include "parallel_kernel.h"
+#include "../include/parallel_kernel.h"
 #include "omp.h"
 
 void saxpy_parallel(const float *restrict x, float *restrict y, const float a,
